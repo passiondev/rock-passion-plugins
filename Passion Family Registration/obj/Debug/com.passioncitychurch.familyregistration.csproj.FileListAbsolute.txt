@@ -119,3 +119,4 @@ C:\workspace\rock\Passion Family Registration\bin\Debug\com.passioncitychurch.fa
 C:\workspace\rock\Passion Family Registration\bin\Debug\com.passioncitychurch.familyregistration.pdb
 C:\workspace\rock\Passion Family Registration\obj\Debug\com.passioncitychurch.familyregistration.dll
 C:\workspace\rock\Passion Family Registration\obj\Debug\com.passioncitychurch.familyregistration.pdb
+C:\workspace\rock\Passion Family Registration\obj\Debug\com.passioncitychurch.familyregistration.csprojAssemblyReference.cache

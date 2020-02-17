@@ -73,15 +73,15 @@ namespace com.passioncitychurch.familyregistration
             Controls.Add( _lbAddChild );
             _lbAddChild.ID = "_btnAddChild";
             _lbAddChild.Click += lbAddChild_Click;
-            _lbAddChild.AddCssClass( "add btn btn-xs btn-default pull-right" );
+            _lbAddChild.AddCssClass( "add btn btn-xs btn-default" );
             _lbAddChild.CausesValidation = false;
 
-            var iAddFilter = new HtmlGenericControl( "i" );
-            iAddFilter.AddCssClass( "fa fa-user" );
+            var iAddFilter = new HtmlGenericControl( "div" );
+            iAddFilter.AddCssClass( "fa fa-user text-center" );
             _lbAddChild.Controls.Add( iAddFilter );
 
             var spanAddFilter = new HtmlGenericControl( "span" );
-            spanAddFilter.InnerHtml = " Add Child";
+            spanAddFilter.InnerHtml = " Add da Child";
             _lbAddChild.Controls.Add( spanAddFilter );
         }
 

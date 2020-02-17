@@ -804,11 +804,11 @@ namespace com.passioncitychurch.familyregistration
                 // Relationship
                 writer.AddAttribute(HtmlTextWriterAttribute.Class, "row");
                 writer.RenderBeginTag(HtmlTextWriterTag.Div);
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6");
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6 col-xs-12");
                 writer.RenderBeginTag(HtmlTextWriterTag.Div);
                 _ddlRelationshipType.RenderControl(writer);
                 writer.RenderEndTag();
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6"); // filler/blocker column
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6 col-xs-12"); // filler/blocker column
                 writer.RenderBeginTag(HtmlTextWriterTag.Div);
                 writer.RenderEndTag();
                 writer.RenderEndTag(); // end Relationship row
@@ -823,13 +823,13 @@ namespace com.passioncitychurch.familyregistration
                 _tbNickName.Visible = !existingPerson;
                 _tbLastName.Visible = !existingPerson;
 
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6");
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6 col-xs-12");
                 writer.RenderBeginTag(HtmlTextWriterTag.Div);
                 _lNickName.RenderControl(writer);
                 _tbNickName.RenderControl(writer);
                 writer.RenderEndTag();
 
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6");
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6 col-xs-12");
                 writer.RenderBeginTag(HtmlTextWriterTag.Div);
                 _lLastName.RenderControl(writer);
                 _tbLastName.RenderControl(writer);
@@ -838,7 +838,7 @@ namespace com.passioncitychurch.familyregistration
 
                 if (this.ShowSuffix)
                 {
-                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6");
+                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6 col-xs-12");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
                     _ddlSuffix.RenderControl(writer);
                     writer.RenderEndTag();
@@ -846,7 +846,7 @@ namespace com.passioncitychurch.familyregistration
 
                 if (this.ShowGender)
                 {
-                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6");
+                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6 col-xs-12");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
                     _ddlGender.RenderControl(writer);
                     writer.RenderEndTag();
@@ -854,7 +854,7 @@ namespace com.passioncitychurch.familyregistration
 
                 if (this.ShowBirthDate)
                 {
-                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6");
+                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6 col-xs-12");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
                     _dpBirthdate.RenderControl(writer);
                     writer.RenderEndTag();
@@ -862,7 +862,7 @@ namespace com.passioncitychurch.familyregistration
 
                 if (this.ShowGrade)
                 {
-                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6");
+                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6 col-xs-12");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
                     _ddlGradePicker.RenderControl(writer);
                     writer.RenderEndTag();
@@ -870,7 +870,7 @@ namespace com.passioncitychurch.familyregistration
 
                 if (this.ShowMobilePhone)
                 {
-                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6");
+                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6 col-xs-12");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
                     _pnbMobile.RenderControl(writer);
                     writer.RenderEndTag();
@@ -878,7 +878,7 @@ namespace com.passioncitychurch.familyregistration
 
                 if (this.ShowEmailAddress)
                 {
-                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6");
+                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6 col-xs-12");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
                     _ebEmail.RenderControl(writer);
                     writer.RenderEndTag();
@@ -886,7 +886,7 @@ namespace com.passioncitychurch.familyregistration
 
                 foreach (Control attributeCtrl in _phAttributes.Controls)
                 {
-                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6");
+                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-sm-6 col-xs-12");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
                     attributeCtrl.RenderControl(writer);
                     writer.RenderEndTag();
