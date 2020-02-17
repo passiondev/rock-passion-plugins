@@ -111,6 +111,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
     public partial class PassionFamilyPreRegistration : RockBlock
     {
         private const string ADULT_SUFFIX_KEY = "AdultSuffix";
+        private const string ADULT_NAME_KEY = "AdultName";
         private const string ADULT_GENDER_KEY = "AdultGender";
         private const string ADULT_BIRTHDATE_KEY = "AdultBirthdate";
         private const string ADULT_MARTIAL_STATUS_KEY = "AdultMaritalStatus";
@@ -244,7 +245,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
     }})
 
     function testRequiredFields() {{
-        var hasValue = $('#{0}').val() != '' && $('#{1}').val() != '';
+        var hasValue = $('#{0}').val() != '' || $('#{1}').val() != '';
         enableRequiredFields( hasValue );
 
         if (hasValue) {{
@@ -819,6 +820,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
             // Visit Info
             pnlVisit.Visible = pnlCampus.Visible || pnlPlannedDate.Visible;
 
+
             // Adult Suffix
             bool isRequired = SetControl( ADULT_SUFFIX_KEY, pnlSuffix1, pnlSuffix2 );
             dvpSuffix1.Required = isRequired;
@@ -826,6 +828,10 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
             var suffixDt = DefinedTypeCache.Get( Rock.SystemGuid.DefinedType.PERSON_SUFFIX.AsGuid() );
             dvpSuffix1.DefinedTypeId = suffixDt.Id;
             dvpSuffix2.DefinedTypeId = suffixDt.Id;
+
+            // Adult Name
+            tbFirstName1.Required = true;
+            tbLastName1.Required = true;
 
             // Adult Gender
             isRequired = SetControl( ADULT_GENDER_KEY, pnlGender1, pnlGender2 );
@@ -1067,6 +1073,16 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
             if ( adultControl2 != null )
             {
                 adultControl2.Visible = attributeValue != "Hide";
+            }
+            return attributeValue == "Required";
+        }
+
+        private bool SingleSetControl (string attributeKey, WebControl adultControl1 )
+        {
+            string attributeValue = GetAttributeValue(attributeKey);
+            if (adultControl1 != null)
+            {
+                adultControl1.Visible = attributeValue != "Hide";
             }
             return attributeValue == "Required";
         }
