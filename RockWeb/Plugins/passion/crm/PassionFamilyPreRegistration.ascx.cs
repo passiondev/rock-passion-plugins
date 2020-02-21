@@ -833,6 +833,9 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
             tbFirstName1.Required = true;
             tbLastName1.Required = true;
 
+            // Address
+            acAddress.Required = true;
+
             // Adult Gender
             isRequired = SetControl( ADULT_GENDER_KEY, pnlGender1, pnlGender2 );
             ddlGender1.Required = isRequired;

@@ -11,7 +11,7 @@
 
             <div class="panel-body">
                 <div class="panel-heading">
-                    <h1 class="text-center text-primary">bloom & passion kids // Family Registration</h1>
+                    <h1 class="text-center text-primary">Family Registration</h1>
                     <h2 class="text-center">Atlanta</h2>
                 </div>
                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
@@ -32,19 +32,15 @@
                         </div>
                     </asp:Panel>
 
-                    <asp:Panel ID="pnlChildren" runat="server">
-                            <h3 class="text-primary">Children</h3>
-                        <div class="panel-body">
-                            <div class="row">
-                                <Rock:PreRegistrationChildren ID="prChildren" runat="server" OnAddChildClick="prChildren_AddChildClick" />
-                            </div>
-                        </div>
+                    <asp:Panel ID="pnlChildren" runat="server" CssClass="panel-body">
+                        <h3 class="text-primary">Children</h3>
+                        <Rock:PreRegistrationChildren ID="prChildren" runat="server" OnAddChildClick="prChildren_AddChildClick" />
                     </asp:Panel>
                     <hr />
                     <asp:Panel ID="pnlParents" runat="server" CssClass="panel-body">
-                            
 
-                            <asp:HiddenField ID="hfFamilyGuid" runat="server" />
+
+                        <asp:HiddenField ID="hfFamilyGuid" runat="server" />
                             <asp:HiddenField ID="hfAdultGuid1" runat="server" />
                             <asp:HiddenField ID="hfAdultGuid2" runat="server" />
 
