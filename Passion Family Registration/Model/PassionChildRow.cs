@@ -894,10 +894,7 @@ namespace com.passioncitychurch.familyregistration
 
                 writer.RenderEndTag();
 
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, "row");
-                writer.RenderBeginTag(HtmlTextWriterTag.Div);
                 writer.RenderBeginTag(HtmlTextWriterTag.Hr);
-                writer.RenderEndTag();
 
                 writer.RenderEndTag();
             }

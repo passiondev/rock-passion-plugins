@@ -33,8 +33,10 @@
                     </asp:Panel>
 
                     <asp:Panel ID="pnlChildren" runat="server" CssClass="panel-body">
-                        <h3 class="text-primary">Children</h3>
-                        <Passion:PassionPreRegistrationChildren ID="prChildren" runat="server" OnAddChildClick="prChildren_AddChildClick" />
+                        <div class="row">
+                            <h3 class="text-primary">Children</h3>
+                            <Passion:PassionPreRegistrationChildren ID="prChildren" runat="server" OnAddChildClick="prChildren_AddChildClick" />
+                        </div>
                     </asp:Panel>
                     <hr />
                     <asp:Panel ID="pnlParents" runat="server" CssClass="panel-body">
