@@ -34,7 +34,7 @@
 
                     <asp:Panel ID="pnlChildren" runat="server" CssClass="panel-body">
                         <h3 class="text-primary">Children</h3>
-                        <Rock:PreRegistrationChildren ID="prChildren" runat="server" OnAddChildClick="prChildren_AddChildClick" />
+                        <Passion:PassionPreRegistrationChildren ID="prChildren" runat="server" OnAddChildClick="prChildren_AddChildClick" />
                     </asp:Panel>
                     <hr />
                     <asp:Panel ID="pnlParents" runat="server" CssClass="panel-body">

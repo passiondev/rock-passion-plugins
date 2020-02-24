@@ -1436,7 +1436,6 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
         private void GetChildrenData()
         {
             Children = new List<PassionPreRegistrationChild>();
-            /// PassionChildRow childRow =  new PassionChildRow();
 
             foreach ( var childRow in prChildren.ChildRows)
             {

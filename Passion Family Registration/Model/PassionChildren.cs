@@ -30,7 +30,7 @@ namespace com.passioncitychurch.familyregistration
     /// <summary>
     /// Report Filter control
     /// </summary>
-    [ToolboxData( "<{0}:PreRegistrationChildren runat=server></{0}:PreRegistrationChildren>" )]
+    [ToolboxData("<{0}:PassionPreRegistrationChildren runat=server></{0}:PassionPreRegistrationChildren>")]
     public class PassionPreRegistrationChildren : PreRegistrationChildren
     {
         private LinkButton _lbAddChild;
@@ -73,15 +73,15 @@ namespace com.passioncitychurch.familyregistration
             Controls.Add( _lbAddChild );
             _lbAddChild.ID = "_btnAddChild";
             _lbAddChild.Click += lbAddChild_Click;
-            _lbAddChild.AddCssClass( "add btn btn-xs btn-default" );
+            _lbAddChild.AddCssClass("add btn btn-xs btn-default");
             _lbAddChild.CausesValidation = false;
 
             var iAddFilter = new HtmlGenericControl( "div" );
-            iAddFilter.AddCssClass( "fa fa-user text-center" );
+            iAddFilter.AddCssClass( "fa fa-user" );
             _lbAddChild.Controls.Add( iAddFilter );
 
             var spanAddFilter = new HtmlGenericControl( "span" );
-            spanAddFilter.InnerHtml = " Add da Child";
+            spanAddFilter.InnerHtml = " Add Child";
             _lbAddChild.Controls.Add( spanAddFilter );
         }
 
@@ -118,7 +118,7 @@ namespace com.passioncitychurch.familyregistration
                     }
                 }
 
-                writer.AddAttribute( HtmlTextWriterAttribute.Class, "pull-right" );
+                writer.AddAttribute( HtmlTextWriterAttribute.Class, "text-center");
                 writer.RenderBeginTag( HtmlTextWriterTag.Div );
                 _lbAddChild.RenderControl( writer );
                 writer.RenderEndTag();
