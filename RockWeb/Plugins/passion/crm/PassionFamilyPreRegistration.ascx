@@ -38,9 +38,9 @@
                     </asp:Panel>
                     <hr />
                     <asp:Panel ID="pnlParents" runat="server" CssClass="panel-body">
+                        <div class="row">
 
-
-                        <asp:HiddenField ID="hfFamilyGuid" runat="server" />
+                            <asp:HiddenField ID="hfFamilyGuid" runat="server" />
                             <asp:HiddenField ID="hfAdultGuid1" runat="server" />
                             <asp:HiddenField ID="hfAdultGuid2" runat="server" />
 
@@ -130,8 +130,9 @@
                                 </div>
                             </div>
                             <hr />
+                        </div>
                     </asp:Panel>
-                    
+
                     <div class="col-sm-4 col-sm-offset-4 col-xs-12 text-center form-group">
                         <asp:LinkButton ID="lbSave" runat="server" Text="Save" CssClass="btn btn-primary btn-block" OnClick="btnSave_Click" />
                         <!--<asp:LinkButton ID="lbCancel" runat="server" Text="Cancel" CssClass="btn btn-link" CausesValidation="false" />-->
