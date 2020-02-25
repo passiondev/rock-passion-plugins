@@ -760,9 +760,8 @@ namespace com.passioncitychurch.familyregistration
 
             _ebEmail.Label = "Email Address";
 
-            _ddlRelationshipType.CssClass = "form-control";
+            _ddlRelationshipType.CssClass = "form-control collapse";
             _ddlRelationshipType.Required = true;
-            _ddlRelationshipType.Label = "Relationship to Adult";
             _ddlRelationshipType.DataValueField = "Key";
             _ddlRelationshipType.DataTextField = "Value";
             string relationshipTypeValue = _ddlRelationshipType.SelectedValue;
