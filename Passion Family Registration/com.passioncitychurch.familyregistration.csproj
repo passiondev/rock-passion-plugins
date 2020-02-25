@@ -50,8 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\PassionChildren.cs" />
-    <Compile Include="Model\PassionChildRow.cs" />
+    <Compile Include="Model\Children\PassionChildren.cs" />
+    <Compile Include="Model\Children\PassionChildRow.cs" />
+    <Compile Include="Model\Students\PassionStudents.cs" />
+    <Compile Include="Model\Students\PassionStudentRow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,5 +62,12 @@
       <Name>Rock</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="libman.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
