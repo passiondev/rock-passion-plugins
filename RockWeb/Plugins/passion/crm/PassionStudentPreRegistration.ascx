@@ -19,9 +19,6 @@
                     <asp:Panel ID="pnlVisit" runat="server">
                         <div class="panel-body">
                             <div class="row">
-                                <asp:Panel CssClass="col-md-8 col-xs-12" runat="server" ID="pnlCampus">
-                                    <Rock:CampusPicker ID="cpCampus" runat="server" CssClass="input-width-lg" Label="Location" />
-                                </asp:Panel>
                                 <asp:Panel CssClass="col-md-8 col-xs-12" runat="server" ID="pnlPlannedDate">
                                     <Rock:DatePicker ID="dpPlannedDate" runat="server" Label="Planned Visit Date" AllowPastDateSelection="false" />
                                 </asp:Panel>
