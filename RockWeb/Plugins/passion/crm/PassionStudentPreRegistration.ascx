@@ -122,7 +122,7 @@
                                         <Rock:DatePicker ID="dpPlannedDate" runat="server" Label="Planned Visit Date" AllowPastDateSelection="false" />
                                     </asp:Panel>
                                 </asp:Panel>
-                                <div class="col-sm-8 col-xs-12">
+                                <div class="col-sm-12 col-xs-12">
                                     <Rock:DynamicPlaceholder ID="phFamilyAttributes" runat="server" />
                                 </div>
                             </div>
