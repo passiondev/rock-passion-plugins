@@ -16,16 +16,6 @@
                 </div>
                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
                     <hr />
-                    <asp:Panel ID="pnlVisit" runat="server">
-                        <div class="panel-body">
-                            <div class="row">
-                                <asp:Panel CssClass="col-md-8 col-xs-12" runat="server" ID="pnlPlannedDate">
-                                    <Rock:DatePicker ID="dpPlannedDate" runat="server" Label="Planned Visit Date" AllowPastDateSelection="false" />
-                                </asp:Panel>
-                            </div>
-                        </div>
-                    </asp:Panel>
-
                     <asp:Panel ID="pnlChildren" runat="server" CssClass="panel-body">
                         <div class="row">
                             <h3 class="text-primary">Students</h3>
@@ -124,8 +114,13 @@
                             </div>
                             <hr />
                             <div class="row">
-                                <asp:Panel CssClass="col-md-6 col-xs-12" runat="server" ID="Panel1">
-                                    <Rock:CampusPicker ID="CampusPicker1" runat="server" CssClass="input-width-lg" Label="Location" />
+                                <asp:Panel ID="pnlVisit" runat="server">
+                                    <asp:Panel CssClass="col-md-8 col-xs-12" runat="server" ID="pnlCampus">
+                                        <Rock:CampusPicker ID="cpCampus" runat="server" CssClass="input-width-lg" Label="Location" />
+                                    </asp:Panel>
+                                    <asp:Panel CssClass="col-md-8 col-xs-12" runat="server" ID="pnlPlannedDate">
+                                        <Rock:DatePicker ID="dpPlannedDate" runat="server" Label="Planned Visit Date" AllowPastDateSelection="false" />
+                                    </asp:Panel>
                                 </asp:Panel>
                                 <div class="col-sm-8 col-xs-12">
                                     <Rock:DynamicPlaceholder ID="phFamilyAttributes" runat="server" />
