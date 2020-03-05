@@ -115,6 +115,9 @@
                             <hr />
                             <div class="row">
                                 <asp:Panel ID="pnlVisit" runat="server">
+                                    <asp:Panel CssClass="col-md-8 col-xs-12" runat="server" ID="pnlLocation">
+                                        <Rock:RockDropDownList ID="ddlCheckinType" runat="server" Label="Location" DataTextField="Name" DataValueField="Id"/>
+                                    </asp:Panel>
                                     <asp:Panel CssClass="col-md-8 col-xs-12" runat="server" ID="pnlCampus">
                                         <Rock:CampusPicker ID="cpCampus" runat="server" CssClass="input-width-lg" Label="Location" />
                                     </asp:Panel>
