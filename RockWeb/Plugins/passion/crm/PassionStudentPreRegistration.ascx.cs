@@ -57,7 +57,7 @@ comma-delimited list of the person ids for each adult; 'ChildIds' which is a com
 the value entered for the Planned Visit Date field if it was displayed.
 ", CodeEditorMode.Lava, CodeEditorTheme.Rock, 200, true, "", "", 9 )]
     [BooleanField("Require Campus", "Require that a campus be selected", true, "", 10)]
-    [CustomCheckboxListField("Locations Displayed", "Which locations should be displayed in the dropdown?", "515^2,Cumberland^3,DC^5", false, null, "", 0, LOCATIONS_DISPLAYED_KEY)]
+    [CustomCheckboxListField("Locations Displayed", "Which locations should be displayed in the dropdown?", "2^515,3^Cumberland,5^DC", false, null, "", 0, LOCATIONS_DISPLAYED_KEY)]
 
     [CustomDropdownListField( "Suffix", "How should Suffix be displayed for adults?", HIDE_OPTIONAL, false, "Hide", "Adult Fields", 0, ADULT_SUFFIX_KEY )]
     [CustomDropdownListField( "Gender", "How should Gender be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "Adult Fields", 1, ADULT_GENDER_KEY )]
