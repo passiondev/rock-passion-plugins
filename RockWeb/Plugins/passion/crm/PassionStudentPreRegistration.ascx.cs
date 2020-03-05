@@ -805,7 +805,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
             {
 
                 ddlLocation.Items.Clear();
-                var locationsDisplayed = GetAttributeValues(LOCATIONS_DISPLAYED_KEY);
+                var locationsDisplayed = GetAttributeValue(LOCATIONS_DISPLAYED_KEY).SplitDelimitedValues(true);
                 foreach (var location in locationsDisplayed)
                 {
                     ddlLocation.Items.Add(location);
