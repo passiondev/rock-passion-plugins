@@ -57,7 +57,7 @@ comma-delimited list of the person ids for each adult; 'ChildIds' which is a com
 the value entered for the Planned Visit Date field if it was displayed.
 ", CodeEditorMode.Lava, CodeEditorTheme.Rock, 200, true, "", "", 9 )]
     [BooleanField("Require Campus", "Require that a campus be selected", true, "", 10)]
-    [CustomCheckboxListField("Locations Displayed", "Which locations should be displayed in the dropdown?", "515,Cumberland,DC", false, null, "", 0, LOCATIONS_DISPLAYED_KEY)]
+    [CustomCheckboxListField("Locations Displayed", "Which locations should be displayed in the dropdown?", "2^&515,3^Cumberland,5^DC", false, null, "", 0, LOCATIONS_DISPLAYED_KEY)]
 
     [CustomDropdownListField( "Suffix", "How should Suffix be displayed for adults?", HIDE_OPTIONAL, false, "Hide", "Adult Fields", 0, ADULT_SUFFIX_KEY )]
     [CustomDropdownListField( "Gender", "How should Gender be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "Adult Fields", 1, ADULT_GENDER_KEY )]
@@ -455,9 +455,9 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
                 // If we do have an existing family, set it's campus if the campus selection was visible
                 if ( primaryFamily != null )
                 {
-                    if ( pnlCampus.Visible )
+                    if (ddlLocation.Visible )
                     {
-                        primaryFamily.CampusId = cpCampus.SelectedValueAsInt();
+                        primaryFamily.CampusId = ddlLocation.SelectedValueAsInt();
                     }
                 }
                 else
@@ -797,7 +797,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
         /// </summary>
         private void SetControls()
         {
-            pnlVisit.Visible = true;
+            pnlVisit.Visible = false;
             pnlLocation.Visible = true;
 
             // Campus 
@@ -811,14 +811,22 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
                     ddlLocation.Items.Add(location);
                 }
 
-
+                if (ddlLocation.Items.Count > 1)
+                {
+                    ddlLocation.Required = true;
+                    ddlLocation.Visible = true;
+                } else
+                {
+                    ddlLocation.Required = false;
+                    ddlLocation.Visible = false;
+                }
 
 
                 cpCampus.Campuses = CampusCache.All( false );
                 if ( CampusCache.All( false ).Count > 1 )
                 {
-                    pnlCampus.Visible = true;
-                    cpCampus.Required = GetAttributeValue( "RequireCampus" ).AsBoolean();
+                    pnlCampus.Visible = false;
+                    cpCampus.Required = false;
                 }
                 else
                 {
@@ -1633,9 +1641,9 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
             family.GroupTypeId = familyGroupTypeId;
 
             // If the campus selection was visible, set the families campus based on selection, otherwise, use default campus value
-            if ( pnlCampus.Visible )
+            if ( ddlLocation.Visible )
             {
-                family.CampusId = cpCampus.SelectedValueAsInt();
+                family.CampusId = ddlLocation.SelectedValueAsInt();
             }
             else
             {
