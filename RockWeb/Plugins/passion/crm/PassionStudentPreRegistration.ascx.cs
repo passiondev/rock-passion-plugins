@@ -809,7 +809,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
                 {
                     ddlLocation.Items.Add(CampusCache.Get(location).Name);
                 }
-                if (GetAttributeValue(LOCATIONS_DISPLAYED_KEY).SplitDelimitedValues(true).Length > 1)
+                if (GetAttributeValue(LOCATIONS_DISPLAYED_KEY).SplitDelimitedValues(true).Count() > 1)
                 {
                     ddlLocation.Required = true;
                     ddlLocation.Visible = true;
