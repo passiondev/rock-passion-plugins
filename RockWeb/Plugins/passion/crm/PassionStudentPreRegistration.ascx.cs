@@ -458,7 +458,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
                 {
                     if (ddlLocation.Visible )
                     {
-                        primaryFamily.CampusId = ddlLocation.SelectedValueAsInt();
+                        primaryFamily.CampusId = CampusCache.Get(locationList[ddlLocation.SelectedValue]).Id;
                     }
                 }
                 else
@@ -803,16 +803,24 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
             ddlLocation.Required = true;
             ddlLocation.Visible = true;
 
+            // Populate location list for getting campus guids by name
+            locationList = new Dictionary<string, string>()
+            {
+                {"515", "3F78A057-21B9-4C20-832D-8F1A6F93539D"},
+                {"Cumberland", "FB8C406E-721C-40BF-A382-7A9FC3236F1D"},
+                {"East Atlanta", "76882AE3-1CE8-42A6-A2B6-8C0B29CF8CF8"},
+                {"DC", "D4127B24-E6EE-4117-A688-92BB7C23A461" }
+            };
+
             // Campus 
             if ( GetAttributeValue( "ShowCampus" ).AsBoolean() )
             {
-                locationList = new Dictionary<string, string>();
+                
                 ddlLocation.Items.Clear();
                 var locationsDisplayed = GetAttributeValue(LOCATIONS_DISPLAYED_KEY).SplitDelimitedValues(true);
                 foreach (var location in locationsDisplayed)
                 {
                     ddlLocation.Items.Add(CampusCache.Get(location).Name);
-                    locationList.Add(CampusCache.Get(location).Name, location);
                 }
                 if (GetAttributeValue(LOCATIONS_DISPLAYED_KEY).SplitDelimitedValues(true).Length > 1)
                 {
@@ -1007,6 +1015,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
             {
                 // Set the campus from the family
                 cpCampus.SetValue( family.CampusId );
+                ddlLocation.SetValue( family.Campus.Name );
 
                 // Set the address from the family
                 var homeLocationType = DefinedValueCache.Get( Rock.SystemGuid.DefinedValue.GROUP_LOCATION_TYPE_HOME.AsGuid() );
@@ -1072,6 +1081,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
                     if ( defaultCampus != null )
                     {
                         cpCampus.SetValue( defaultCampus.Id );
+                        ddlLocation.SetValue( defaultCampus.Name );
                     }
                 }
 
