@@ -798,9 +798,6 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
         private void SetControls()
         {
             pnlVisit.Visible = true;
-            pnlLocation.Visible = true;
-            ddlLocation.Required = true;
-            ddlLocation.Visible = true;
 
             // Campus 
             if ( GetAttributeValue( "ShowCampus" ).AsBoolean() )
