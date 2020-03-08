@@ -38,7 +38,7 @@ namespace RockWeb.Plugins.passion.crm
     [Category("Passion")]
     [Description("Allows families to pre-register for Passion Students for a quick check-in experience.")]
 
-    [TextField("City Header", "What is the name of the City you want displayed in the page header?", true, "", Key = CITY_HEADER_KEY)]
+    [CustomCheckboxListField("City Header", "What is the name of the City you want displayed in the page header?", "Atlanta,DC", true, null, "", 0, Key = CITY_HEADER_KEY)]
     [BooleanField("Show Campus", "Should the campus field be displayed? If there is only one active campus then the campus field will not show.", true, "", 0)]
     [CampusField("Default Campus", "An optional campus to use by default when adding a new family.", false, "", "", 1)]
     [CustomDropdownListField("Planned Visit Date", "How should the Planned Visit Date field be displayed (this value is only used when starting a workflow)?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "", 2)]
@@ -800,7 +800,20 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
         private void SetControls()
         {
 
-            lblCityHeader.Text = GetAttributeValue(CITY_HEADER_KEY);
+            var city = GetAttributeValue(CITY_HEADER_KEY);
+            if (city == "Atlanta")
+            {
+                pnlCityHeaderAtlanta.Visible = true;
+                pnlCityHeaderDc.Visible = false;
+            } else if (city == "DC")
+            {
+                pnlCityHeaderAtlanta.Visible = false;
+                pnlCityHeaderDc.Visible = true;
+            } else
+            {
+                pnlCityHeaderAtlanta.Visible = false;
+                pnlCityHeaderDc.Visible = false;
+            }
 
             pnlVisit.Visible = true;
 
