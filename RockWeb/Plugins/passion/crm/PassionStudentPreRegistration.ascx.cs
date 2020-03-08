@@ -133,7 +133,6 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
         private const string HIDE_OPTIONAL_REQUIRED = "Hide,Optional,Required";
         private const string HIDE_OPTIONAL = "Hide,Optional";
         private const string LOCATIONS_DISPLAYED_KEY = "LocationsDisplayed";
-        private Dictionary<string, string> locationList;
 
         #region Fields
 
@@ -458,7 +457,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
                 {
                     if (ddlLocation.Visible )
                     {
-                        primaryFamily.CampusId = CampusCache.Get(locationList[ddlLocation.SelectedValue]).Id;
+                        primaryFamily.CampusId = CampusCache.Get(LocationList()[ddlLocation.SelectedValue]).Id;
                     }
                 }
                 else
@@ -802,15 +801,6 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
             pnlLocation.Visible = true;
             ddlLocation.Required = true;
             ddlLocation.Visible = true;
-
-            // Populate location list for getting campus guids by name
-            locationList = new Dictionary<string, string>()
-            {
-                {"515", "3F78A057-21B9-4C20-832D-8F1A6F93539D"},
-                {"Cumberland", "FB8C406E-721C-40BF-A382-7A9FC3236F1D"},
-                {"East Atlanta", "76882AE3-1CE8-42A6-A2B6-8C0B29CF8CF8"},
-                {"DC", "D4127B24-E6EE-4117-A688-92BB7C23A461" }
-            };
 
             // Campus 
             if ( GetAttributeValue( "ShowCampus" ).AsBoolean() )
@@ -1658,7 +1648,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
             // If the campus selection was visible, set the families campus based on selection, otherwise, use default campus value
             if ( ddlLocation.Visible )
             {
-                family.CampusId = CampusCache.Get( locationList[ddlLocation.SelectedValue] ).Id;
+                family.CampusId = CampusCache.Get(LocationList()[ddlLocation.SelectedValue]).Id;
             }
             else
             {
@@ -1834,22 +1824,20 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
             }
         }
 
-        public string getSingularChildType()
+        /// <summary>
+        /// Returns a key/value list of location Names/Guids
+        /// </summary>
+        private Dictionary<string, string> LocationList()
         {
-            string rawChildType = GetAttributeValue("ChildType").ToLower();
-            string childType;
-            if (rawChildType == "child" || rawChildType == "children")
+            // Populate location list for getting campus guids by name
+            var locationList = new Dictionary<string, string>()
             {
-                childType = "Child";
-            } else if (rawChildType == "student" || rawChildType == "students")
-            {
-                childType = "Student";
-            } else
-            {
-                childType = "Child";
-            }
-
-            return childType;
+                {"515", "3F78A057-21B9-4C20-832D-8F1A6F93539D"},
+                {"Cumberland", "FB8C406E-721C-40BF-A382-7A9FC3236F1D"},
+                {"East Atlanta", "76882AE3-1CE8-42A6-A2B6-8C0B29CF8CF8"},
+                {"DC", "D4127B24-E6EE-4117-A688-92BB7C23A461" }
+            };
+            return locationList;
         }
 
         #endregion
