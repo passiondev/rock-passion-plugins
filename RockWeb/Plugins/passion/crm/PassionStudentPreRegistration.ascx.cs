@@ -34,49 +34,49 @@ using com.passioncitychurch.familyregistration;
 
 namespace RockWeb.Plugins.passion.crm
 {
-    [DisplayName( "Passion Students Registration" )]
-    [Category( "Passion" )]
-    [Description( "Allows families to pre-register for Passion Students for a quick check-in experience." )]
+    [DisplayName("Passion Students Registration")]
+    [Category("Passion")]
+    [Description("Allows families to pre-register for Passion Students for a quick check-in experience.")]
 
-    [BooleanField( "Show Campus", "Should the campus field be displayed? If there is only one active campus then the campus field will not show.", true, "", 0 )]
-    [CampusField( "Default Campus", "An optional campus to use by default when adding a new family.", false, "", "", 1 )]
-    [CustomDropdownListField( "Planned Visit Date", "How should the Planned Visit Date field be displayed (this value is only used when starting a workflow)?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "", 2 )]
-    [AttributeField( Rock.SystemGuid.EntityType.GROUP, "GroupTypeId", Rock.SystemGuid.GroupType.GROUPTYPE_FAMILY, "Family Attributes", "The Family attributes that should be displayed", false, true, "", "", 3 )]
-    [BooleanField( "Allow Updates", "If the person visiting this block is logged in, should the block be used to update their family? If not, a new family will always be created unless 'Auto Match' is enabled and the information entered matches an existing person.", false, "", 4 )]
-    [BooleanField( "Auto Match", "Should this block attempt to match people to to current records in the database.", true, "", 5)]
-    [DefinedValueField( Rock.SystemGuid.DefinedType.PERSON_CONNECTION_STATUS, "Connection Status", "The connection status that should be used when adding new people.", false, false, Rock.SystemGuid.DefinedValue.PERSON_CONNECTION_STATUS_VISITOR, "", 6 )]
-    [DefinedValueField( Rock.SystemGuid.DefinedType.PERSON_RECORD_STATUS, "Record Status", "The record status that should be used when adding new people.", false, false, Rock.SystemGuid.DefinedValue.PERSON_RECORD_STATUS_ACTIVE, "", 7 )]
-    [WorkflowTypeField( "Workflow Types", @"
+    [BooleanField("Show Campus", "Should the campus field be displayed? If there is only one active campus then the campus field will not show.", true, "", 0)]
+    [CampusField("Default Campus", "An optional campus to use by default when adding a new family.", false, "", "", 1)]
+    [CustomDropdownListField("Planned Visit Date", "How should the Planned Visit Date field be displayed (this value is only used when starting a workflow)?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "", 2)]
+    [AttributeField(Rock.SystemGuid.EntityType.GROUP, "GroupTypeId", Rock.SystemGuid.GroupType.GROUPTYPE_FAMILY, "Family Attributes", "The Family attributes that should be displayed", false, true, "", "", 3)]
+    [BooleanField("Allow Updates", "If the person visiting this block is logged in, should the block be used to update their family? If not, a new family will always be created unless 'Auto Match' is enabled and the information entered matches an existing person.", false, "", 4)]
+    [BooleanField("Auto Match", "Should this block attempt to match people to to current records in the database.", true, "", 5)]
+    [DefinedValueField(Rock.SystemGuid.DefinedType.PERSON_CONNECTION_STATUS, "Connection Status", "The connection status that should be used when adding new people.", false, false, Rock.SystemGuid.DefinedValue.PERSON_CONNECTION_STATUS_VISITOR, "", 6)]
+    [DefinedValueField(Rock.SystemGuid.DefinedType.PERSON_RECORD_STATUS, "Record Status", "The record status that should be used when adding new people.", false, false, Rock.SystemGuid.DefinedValue.PERSON_RECORD_STATUS_ACTIVE, "", 7)]
+    [WorkflowTypeField("Workflow Types", @"
 The workflow type(s) to launch when a family is added. The primary family will be passed to each workflow as the entity. Additionally if the workflow type has any of the 
 following attribute keys defined, those attribute values will also be set: ParentIds, ChildIds, PlannedVisitDate.
-", true, false, "", "", 8 )]
-    [CodeEditorField( "Redirect URL", @"
+", true, false, "", "", 8)]
+    [CodeEditorField("Redirect URL", @"
 The URL to redirect user to when they have completed the registration. The merge fields that are available includes 'Family', which is an object for the primary family 
 that is created/updated; 'RelatedChildren', which is a list of the children who have a relationship with the family, but are not in the family; 'ParentIds' which is a
 comma-delimited list of the person ids for each adult; 'ChildIds' which is a comma-delimited list of the person ids for each child; and 'PlannedVisitDate' which is 
 the value entered for the Planned Visit Date field if it was displayed.
-", CodeEditorMode.Lava, CodeEditorTheme.Rock, 200, true, "", "", 9 )]
+", CodeEditorMode.Lava, CodeEditorTheme.Rock, 200, true, "", "", 9)]
     [BooleanField("Require Campus", "Require that a campus be selected", true, "", 10)]
-    [CustomCheckboxListField("Locations Displayed", "Which locations should be displayed in the dropdown?", "2^&515,3^Cumberland,5^DC", false, null, "", 0, LOCATIONS_DISPLAYED_KEY)]
+    [CustomCheckboxListField("Locations Displayed", "Which locations should be displayed in the dropdown?", "3F78A057-21B9-4C20-832D-8F1A6F93539D^515,FB8C406E-721C-40BF-A382-7A9FC3236F1D^Cumberland,D4127B24-E6EE-4117-A688-92BB7C23A461^DC", false, null, "", 0, LOCATIONS_DISPLAYED_KEY)]
 
-    [CustomDropdownListField( "Suffix", "How should Suffix be displayed for adults?", HIDE_OPTIONAL, false, "Hide", "Adult Fields", 0, ADULT_SUFFIX_KEY )]
-    [CustomDropdownListField( "Gender", "How should Gender be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "Adult Fields", 1, ADULT_GENDER_KEY )]
-    [CustomDropdownListField( "Birth Date", "How should Birth Date be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "Adult Fields", 2, ADULT_BIRTHDATE_KEY )]
-    [CustomDropdownListField( "Marital Status", "How should Marital Status be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Required", "Adult Fields", 3, ADULT_MARTIAL_STATUS_KEY )]
-    [CustomDropdownListField( "Email", "How should Email be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Required", "Adult Fields", 4, ADULT_EMAIL_KEY )]
-    [CustomDropdownListField( "Mobile Phone", "How should Mobile Phone be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Required", "Adult Fields", 5, ADULT_MOBILE_KEY )]
-    [AttributeCategoryField( "Attribute Categories", "The adult Attribute Categories to display attributes from", true, "Rock.Model.Person", false, "", "Adult Fields", 6, ADULT_CATEGORIES_KEY )]
+    [CustomDropdownListField("Suffix", "How should Suffix be displayed for adults?", HIDE_OPTIONAL, false, "Hide", "Adult Fields", 0, ADULT_SUFFIX_KEY)]
+    [CustomDropdownListField("Gender", "How should Gender be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "Adult Fields", 1, ADULT_GENDER_KEY)]
+    [CustomDropdownListField("Birth Date", "How should Birth Date be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "Adult Fields", 2, ADULT_BIRTHDATE_KEY)]
+    [CustomDropdownListField("Marital Status", "How should Marital Status be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Required", "Adult Fields", 3, ADULT_MARTIAL_STATUS_KEY)]
+    [CustomDropdownListField("Email", "How should Email be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Required", "Adult Fields", 4, ADULT_EMAIL_KEY)]
+    [CustomDropdownListField("Mobile Phone", "How should Mobile Phone be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Required", "Adult Fields", 5, ADULT_MOBILE_KEY)]
+    [AttributeCategoryField("Attribute Categories", "The adult Attribute Categories to display attributes from", true, "Rock.Model.Person", false, "", "Adult Fields", 6, ADULT_CATEGORIES_KEY)]
 
-    [EncryptedTextFieldAttribute( "Child Type", "What should a child be referred to as?", true, "Child", null, 0, CHILD_TYPE_KEY, false)]
-    [CustomDropdownListField( "Suffix", "How should Suffix be displayed for children?", HIDE_OPTIONAL, false, "Hide", "Child Fields", 0, CHILD_SUFFIX_KEY )]
-    [CustomDropdownListField( "Gender", "How should Gender be displayed for children?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "Child Fields", 1, CHILD_GENDER_KEY )]
-    [CustomDropdownListField( "Birth Date", "How should Birth Date be displayed for children?", HIDE_OPTIONAL_REQUIRED, false, "Required", "Child Fields", 2, CHILD_BIRTHDATE_KEY )]
-    [CustomDropdownListField( "Grade", "How should Grade be displayed for children?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "Child Fields", 3, CHILD_GRADE_KEY )]
-    [CustomDropdownListField( "Email", "How should Email be displayed for children?  Be sure to seek legal guidance when collecting email addresses on minors.", HIDE_OPTIONAL_REQUIRED, false, "Hide", "Child Fields", 4, CHILD_EMAIL_KEY )]
-    [CustomDropdownListField( "Mobile Phone", "How should Mobile Phone be displayed for children?", HIDE_OPTIONAL_REQUIRED, false, "Hide", "Child Fields", 5, CHILD_MOBILE_KEY )]
-    [AttributeCategoryField( "Attribute Categories", "The children Attribute Categories to display attributes from.", true, "Rock.Model.Person", false, "", "Child Fields", 6, CHILD_CATEGORIES_KEY )]
+    [EncryptedTextFieldAttribute("Child Type", "What should a child be referred to as?", true, "Child", null, 0, CHILD_TYPE_KEY, false)]
+    [CustomDropdownListField("Suffix", "How should Suffix be displayed for children?", HIDE_OPTIONAL, false, "Hide", "Child Fields", 0, CHILD_SUFFIX_KEY)]
+    [CustomDropdownListField("Gender", "How should Gender be displayed for children?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "Child Fields", 1, CHILD_GENDER_KEY)]
+    [CustomDropdownListField("Birth Date", "How should Birth Date be displayed for children?", HIDE_OPTIONAL_REQUIRED, false, "Required", "Child Fields", 2, CHILD_BIRTHDATE_KEY)]
+    [CustomDropdownListField("Grade", "How should Grade be displayed for children?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "Child Fields", 3, CHILD_GRADE_KEY)]
+    [CustomDropdownListField("Email", "How should Email be displayed for children?  Be sure to seek legal guidance when collecting email addresses on minors.", HIDE_OPTIONAL_REQUIRED, false, "Hide", "Child Fields", 4, CHILD_EMAIL_KEY)]
+    [CustomDropdownListField("Mobile Phone", "How should Mobile Phone be displayed for children?", HIDE_OPTIONAL_REQUIRED, false, "Hide", "Child Fields", 5, CHILD_MOBILE_KEY)]
+    [AttributeCategoryField("Attribute Categories", "The children Attribute Categories to display attributes from.", true, "Rock.Model.Person", false, "", "Child Fields", 6, CHILD_CATEGORIES_KEY)]
 
-    [CustomEnhancedListField( "Relationship Types", "The possible child-to-adult relationships. The value 'Child' will always be included.", @"
+    [CustomEnhancedListField("Relationship Types", "The possible child-to-adult relationships. The value 'Child' will always be included.", @"
 SELECT 
 	R.[Id] AS [Value],
 	R.[Name] AS [Text]
@@ -86,8 +86,8 @@ WHERE T.[Guid] = 'E0C5A0E2-B7B3-4EF4-820D-BBF7F9A374EF'
 AND R.[Name] <> 'Child'
 UNION ALL
 SELECT 0, 'Child'
-ORDER BY [Text]", false, "0", "Child Relationship", 0, "Relationships" )]
-    [CustomEnhancedListField( "Same Immediate Family Relationships", "The relationships which indicate the child is in the same immediate family as the adult(s) rather than creating a new family for the child. In most cases, 'Child' will be the only value included in this list. Any values included in this list that are not in the Relationship Types list will be ignored.", @"
+ORDER BY [Text]", false, "0", "Child Relationship", 0, "Relationships")]
+    [CustomEnhancedListField("Same Immediate Family Relationships", "The relationships which indicate the child is in the same immediate family as the adult(s) rather than creating a new family for the child. In most cases, 'Child' will be the only value included in this list. Any values included in this list that are not in the Relationship Types list will be ignored.", @"
 SELECT 
 	R.[Id] AS [Value],
 	R.[Name] AS [Text]
@@ -97,8 +97,8 @@ WHERE T.[Guid] = 'E0C5A0E2-B7B3-4EF4-820D-BBF7F9A374EF'
 AND R.[Name] <> 'Child'
 UNION ALL
 SELECT 0, 'Child'
-ORDER BY [Text]", false, "0", "Child Relationship", 1, "FamilyRelationships" )]
-    [CustomEnhancedListField( "Can Check-in Relationship", "Any relationships that, if selected, will also create an additional 'Can Check-in' relationship between the adult and the child. This is only necessary if the relationship (selected by the user) does not have the 'Allow Check-in' option.", @"
+ORDER BY [Text]", false, "0", "Child Relationship", 1, "FamilyRelationships")]
+    [CustomEnhancedListField("Can Check-in Relationship", "Any relationships that, if selected, will also create an additional 'Can Check-in' relationship between the adult and the child. This is only necessary if the relationship (selected by the user) does not have the 'Allow Check-in' option.", @"
 SELECT 
 	R.[Id] AS [Value],
 	R.[Name] AS [Text]
@@ -108,7 +108,7 @@ WHERE T.[Guid] = 'E0C5A0E2-B7B3-4EF4-820D-BBF7F9A374EF'
 AND R.[Name] <> 'Child'
 UNION ALL
 SELECT 0, 'Child'
-ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" )]
+ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")]
 
     public partial class PassionStudentPreRegistration : RockBlock
     {
@@ -133,6 +133,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
         private const string HIDE_OPTIONAL_REQUIRED = "Hide,Optional,Required";
         private const string HIDE_OPTIONAL = "Hide,Optional";
         private const string LOCATIONS_DISPLAYED_KEY = "LocationsDisplayed";
+        private Dictionary<string, string> locationList;
 
         #region Fields
 
@@ -797,28 +798,32 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
         /// </summary>
         private void SetControls()
         {
-            pnlVisit.Visible = false;
+            pnlVisit.Visible = true;
             pnlLocation.Visible = true;
+            ddlLocation.Required = true;
+            ddlLocation.Visible = true;
 
             // Campus 
             if ( GetAttributeValue( "ShowCampus" ).AsBoolean() )
             {
-
+                locationList = new Dictionary<string, string>();
                 ddlLocation.Items.Clear();
                 var locationsDisplayed = GetAttributeValue(LOCATIONS_DISPLAYED_KEY).SplitDelimitedValues(true);
                 foreach (var location in locationsDisplayed)
                 {
-                    ddlLocation.Items.Add(location);
+                    ddlLocation.Items.Add(CampusCache.Get(location).Name);
+                    locationList.Add(CampusCache.Get(location).Name, location);
                 }
-
-                if (ddlLocation.Items.Count > 1)
+                if (GetAttributeValue(LOCATIONS_DISPLAYED_KEY).SplitDelimitedValues(true).Length > 1)
                 {
                     ddlLocation.Required = true;
                     ddlLocation.Visible = true;
+                    pnlLocation.Visible = true;
                 } else
                 {
                     ddlLocation.Required = false;
                     ddlLocation.Visible = false;
+                    pnlLocation.Visible = false;
                 }
 
 
@@ -842,7 +847,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
             dpPlannedDate.Required = SetControl( "PlannedVisitDate", pnlPlannedDate, null );
 
             // Visit Info
-            pnlVisit.Visible = pnlCampus.Visible || pnlPlannedDate.Visible;
+            pnlVisit.Visible = pnlLocation.Visible || pnlPlannedDate.Visible;
 
 
             // Adult Suffix
@@ -1643,7 +1648,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships" 
             // If the campus selection was visible, set the families campus based on selection, otherwise, use default campus value
             if ( ddlLocation.Visible )
             {
-                family.CampusId = ddlLocation.SelectedValueAsInt();
+                family.CampusId = CampusCache.Get( locationList[ddlLocation.SelectedValue] ).Id;
             }
             else
             {
