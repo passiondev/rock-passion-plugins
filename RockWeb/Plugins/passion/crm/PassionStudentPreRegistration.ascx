@@ -12,7 +12,12 @@
             <div class="panel-body">
                 <div class="panel-heading">
                     <h1 class="text-center text-primary">Students Registration</h1>
-                    <asp:panel ID ="pnlCityHeader" runat="server" CssClass="text-center"></asp:panel>
+                    <asp:panel ID ="pnlCityHeaderAtlanta" runat="server">
+                        <h2 class="text-center">Atlanta</h2>
+                    </asp:panel>
+                    <asp:panel ID ="pnlCityHeaderDc" runat="server">
+                        <h2 class="text-center">DC</h2>
+                    </asp:panel>
                 </div>
                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
                     <hr />
