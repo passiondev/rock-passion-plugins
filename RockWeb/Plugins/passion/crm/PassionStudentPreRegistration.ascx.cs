@@ -57,7 +57,7 @@ comma-delimited list of the person ids for each adult; 'ChildIds' which is a com
 the value entered for the Planned Visit Date field if it was displayed.
 ", CodeEditorMode.Lava, CodeEditorTheme.Rock, 200, true, "", "", 9)]
     [BooleanField("Require Campus", "Require that a campus be selected", true, "", 10)]
-    [CustomCheckboxListField("Locations Displayed", "Which locations should be displayed in the dropdown?", "3F78A057-21B9-4C20-832D-8F1A6F93539D^515,FB8C406E-721C-40BF-A382-7A9FC3236F1D^Cumberland,D4127B24-E6EE-4117-A688-92BB7C23A461^DC", false, null, "", 0, LOCATIONS_DISPLAYED_KEY)]
+    [CustomCheckboxListField("Locations Displayed", "Which locations should be displayed in the dropdown?", " ^ ,3F78A057-21B9-4C20-832D-8F1A6F93539D^515,FB8C406E-721C-40BF-A382-7A9FC3236F1D^Cumberland,D4127B24-E6EE-4117-A688-92BB7C23A461^DC", false, null, "", 0, LOCATIONS_DISPLAYED_KEY)]
 
     [CustomDropdownListField("Suffix", "How should Suffix be displayed for adults?", HIDE_OPTIONAL, false, "Hide", "Adult Fields", 0, ADULT_SUFFIX_KEY)]
     [CustomDropdownListField("Gender", "How should Gender be displayed for adults?", HIDE_OPTIONAL_REQUIRED, false, "Optional", "Adult Fields", 1, ADULT_GENDER_KEY)]
@@ -1551,6 +1551,11 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
         private bool ValidateInfo()
         {
             var errorMessages = new List<string>();
+
+            if (ddlLocation.SelectedValue.IsNullOrWhiteSpace())
+            {
+                errorMessages.Add( "Please select a location." );
+            }
 
             if ( tbFirstName1.Text.IsNullOrWhiteSpace() && tbFirstName2.Text.IsNullOrWhiteSpace() )
             {
