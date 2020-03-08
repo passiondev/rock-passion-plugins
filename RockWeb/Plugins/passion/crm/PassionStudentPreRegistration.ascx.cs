@@ -799,17 +799,18 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
         {
             pnlVisit.Visible = true;
 
+            // Populate location dropdown
+            ddlLocation.Items.Clear();
+            var locationsDisplayed = GetAttributeValue(LOCATIONS_DISPLAYED_KEY).SplitDelimitedValues(true);
+            foreach (var location in locationsDisplayed)
+            {
+                ddlLocation.Items.Add(CampusCache.Get(location).Name);
+            }
+
             // Campus 
             if ( GetAttributeValue( "ShowCampus" ).AsBoolean() )
             {
-                
-                ddlLocation.Items.Clear();
-                var locationsDisplayed = GetAttributeValue(LOCATIONS_DISPLAYED_KEY).SplitDelimitedValues(true);
-                foreach (var location in locationsDisplayed)
-                {
-                    ddlLocation.Items.Add(CampusCache.Get(location).Name);
-                }
-                if (GetAttributeValue(LOCATIONS_DISPLAYED_KEY).SplitDelimitedValues(true).Count() > 1)
+                if (locationsDisplayed.Length > 1)
                 {
                     ddlLocation.Required = true;
                     ddlLocation.Visible = true;
