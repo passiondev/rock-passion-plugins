@@ -615,8 +615,7 @@ namespace RockWeb.Plugins.passion.Security
 
             cbReceiveEmails.Visible = GetAttributeValue( "ShowEmailListCheckbox" ).AsBoolean();
             cbReceiveEmails.Enabled = isEnabled;
-            AttributeCache[] attributes = new AttributeCache[0];
-            attributes[0] = AttributeCache.Get("2E1ECEEE-82F1-424A-A4B6-7A79CF102B6C");
+            AttributeCache[] attributes = new AttributeCache[] { AttributeCache.Get("2E1ECEEE-82F1-424A-A4B6-7A79CF102B6C") };
             cbReceiveEmails.IncludedAttributes = attributes;
 
             cbAcceptTAC.Visible = GetAttributeValue( "ShowAccept" ).AsBoolean();
