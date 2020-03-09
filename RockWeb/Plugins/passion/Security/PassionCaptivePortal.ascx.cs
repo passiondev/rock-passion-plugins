@@ -30,8 +30,8 @@ using Rock.Web.UI.Controls;
 
 namespace RockWeb.Plugins.passion.Security
 {
-    [DisplayName( "Captive Portal" )]
-    [Category( "Security" )]
+    [DisplayName( "Passion Captive Portal" )]
+    [Category( "Passion" )]
     [Description( "Controls access to Wi-Fi." )]
 
     #region Block Settings
