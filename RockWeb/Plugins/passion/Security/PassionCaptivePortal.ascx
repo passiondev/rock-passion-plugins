@@ -24,12 +24,12 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-6">
-                        <Rock:PhoneNumberBox ID="tbMobilePhone" runat="server" Required="false" Label="Mobile Number" ValidationGroup="CaptivePortal" />
+                    <div class="col-sm-8">
+                        <Rock:RockTextBox ID="tbEmail" runat="server" Required="false" Label="Email Address" ValidationGroup="CaptivePortal" />
                     </div>
 
-                    <div class="col-sm-6">
-                        <Rock:RockTextBox ID="tbEmail" runat="server" Required="false" Label="Email Address" ValidationGroup="CaptivePortal" />
+                    <div class="col-sm-8">
+                        <Rock:PhoneNumberBox ID="tbMobilePhone" runat="server" Required="false" Label="Mobile Number" ValidationGroup="CaptivePortal" />
                     </div>
                 </div>
 
