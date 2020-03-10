@@ -614,9 +614,9 @@ namespace RockWeb.Plugins.passion.Security
             tbEmail.Enabled = isEnabled;
 
             cbReceiveEmails.Visible = GetAttributeValue( "ShowEmailListCheckbox" ).AsBoolean();
+            cbReceiveEmails.Required = false;
             cbReceiveEmails.Enabled = isEnabled;
-            AttributeCache[] attributes = new AttributeCache[] { AttributeCache.Get("2E1ECEEE-82F1-424A-A4B6-7A79CF102B6C") };
-            cbReceiveEmails.IncludedAttributes = attributes;
+            cbReceiveEmails.Label = "Receive e-mail updates from Passion City Church";
 
             cbAcceptTAC.Visible = GetAttributeValue( "ShowAccept" ).AsBoolean();
             cbAcceptTAC.Text = GetAttributeValue( "AcceptanceLabel" );

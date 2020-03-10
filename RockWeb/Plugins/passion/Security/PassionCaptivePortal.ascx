@@ -47,7 +47,7 @@
 
                 <div>
                     <div style="display: inline-block;">
-                        <Rock:AttributeValuesContainer ID="cbReceiveEmails" runat="server" ValidationGroup="CaptivePortal" />
+                        <Rock:RockCheckBox ID="cbReceiveEmails" runat="server" ValidationGroup="CaptivePortal" />
                     </div>
                 </div>
 
