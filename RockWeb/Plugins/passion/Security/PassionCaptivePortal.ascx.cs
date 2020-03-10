@@ -666,7 +666,7 @@ namespace RockWeb.Plugins.passion.Security
                 {
                     person.LoadAttributes();
                     person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
-                    person.SaveAttributeValue("WifiEmailAuthorization", new RockContext());
+                    person.SaveAttributeValue("WifiEmailAuthorization", rockContext);
                 }
 
                 int mobilePhoneTypeId = DefinedValueCache.Get( Rock.SystemGuid.DefinedValue.PERSON_PHONE_TYPE_MOBILE ).Id;
