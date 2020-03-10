@@ -572,6 +572,7 @@ namespace RockWeb.Plugins.passion.Security
 
             if (cbReceiveEmails.Checked)
             {
+                person.LoadAttributes();
                 person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
                 person.SaveAttributeValue("WifiEmailAuthorization", new RockContext());
             }
@@ -663,6 +664,7 @@ namespace RockWeb.Plugins.passion.Security
 
                 if (cbReceiveEmails.Checked)
                 {
+                    person.LoadAttributes();
                     person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
                     person.SaveAttributeValue("WifiEmailAuthorization", new RockContext());
                 }
