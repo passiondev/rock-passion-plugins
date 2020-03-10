@@ -51,6 +51,8 @@
                     </div>
                 </div>
 
+                <br />
+
                 <div class="actions">
                     <div>
                         <asp:LinkButton ID="btnConnect" runat="server" Text="Connect To WiFi" CssClass="btn btn-primary" OnClick="btnConnect_Click" style="width:100%;" ValidationGroup="CaptivePortal" />

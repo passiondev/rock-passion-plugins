@@ -563,14 +563,19 @@ namespace RockWeb.Plugins.passion.Security
                 ConnectionStatusValueId = connectionStatusValue != null ? connectionStatusValue.Id : ( int? ) null
             };
 
-            person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
-
             if ( tbMobilePhone.Text.RemoveAllNonAlphaNumericCharacters().IsNotNullOrWhiteSpace() )
             {
                 person.PhoneNumbers = new List<PhoneNumber>() { new PhoneNumber { IsSystem = false, Number = tbMobilePhone.Text.RemoveAllNonAlphaNumericCharacters(), NumberTypeValueId = mobilePhoneTypeId } };
             }
 
             PersonService.SaveNewPerson( person, new RockContext() );
+
+            if (cbReceiveEmails.Checked)
+            {
+                person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
+                person.SaveAttributeValue("WifiEmailAuthorization", new RockContext());
+            }
+
             return person;
         }
 
@@ -656,7 +661,11 @@ namespace RockWeb.Plugins.passion.Security
                 Person person = new PersonService( rockContext ).Get( ( int ) CurrentPersonId );
                 person.Email = tbEmail.Text;
 
-                person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
+                if (cbReceiveEmails.Checked)
+                {
+                    person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
+                    person.SaveAttributeValue("WifiEmailAuthorization", new RockContext());
+                }
 
                 int mobilePhoneTypeId = DefinedValueCache.Get( Rock.SystemGuid.DefinedValue.PERSON_PHONE_TYPE_MOBILE ).Id;
                 if ( !person.PhoneNumbers.Where( n => n.NumberTypeValueId == mobilePhoneTypeId ).Any() &&
