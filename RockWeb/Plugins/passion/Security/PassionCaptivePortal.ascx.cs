@@ -563,6 +563,8 @@ namespace RockWeb.Plugins.passion.Security
                 ConnectionStatusValueId = connectionStatusValue != null ? connectionStatusValue.Id : ( int? ) null
             };
 
+            person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
+
             if ( tbMobilePhone.Text.RemoveAllNonAlphaNumericCharacters().IsNotNullOrWhiteSpace() )
             {
                 person.PhoneNumbers = new List<PhoneNumber>() { new PhoneNumber { IsSystem = false, Number = tbMobilePhone.Text.RemoveAllNonAlphaNumericCharacters(), NumberTypeValueId = mobilePhoneTypeId } };
@@ -617,6 +619,7 @@ namespace RockWeb.Plugins.passion.Security
             cbReceiveEmails.Required = false;
             cbReceiveEmails.Enabled = isEnabled;
             cbReceiveEmails.Label = "Receive e-mail updates from Passion City Church";
+            cbReceiveEmails.AddCssClass( "text-muted" );
 
             cbAcceptTAC.Visible = GetAttributeValue( "ShowAccept" ).AsBoolean();
             cbAcceptTAC.Text = GetAttributeValue( "AcceptanceLabel" );
@@ -653,6 +656,8 @@ namespace RockWeb.Plugins.passion.Security
             {
                 Person person = new PersonService( rockContext ).Get( ( int ) CurrentPersonId );
                 person.Email = tbEmail.Text;
+
+                person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
 
                 int mobilePhoneTypeId = DefinedValueCache.Get( Rock.SystemGuid.DefinedValue.PERSON_PHONE_TYPE_MOBILE ).Id;
                 if ( !person.PhoneNumbers.Where( n => n.NumberTypeValueId == mobilePhoneTypeId ).Any() &&
