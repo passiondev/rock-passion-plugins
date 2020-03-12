@@ -662,13 +662,6 @@ namespace RockWeb.Plugins.passion.Security
                 Person person = new PersonService( rockContext ).Get( ( int ) CurrentPersonId );
                 person.Email = tbEmail.Text;
 
-                if (cbReceiveEmails.Checked)
-                {
-                    person.LoadAttributes();
-                    person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
-                    person.SaveAttributeValue("WifiEmailAuthorization", rockContext);
-                }
-
                 int mobilePhoneTypeId = DefinedValueCache.Get( Rock.SystemGuid.DefinedValue.PERSON_PHONE_TYPE_MOBILE ).Id;
                 if ( !person.PhoneNumbers.Where( n => n.NumberTypeValueId == mobilePhoneTypeId ).Any() &&
                     tbMobilePhone.Text.RemoveAllNonAlphaNumericCharacters().IsNotNullOrWhiteSpace() )
@@ -685,6 +678,13 @@ namespace RockWeb.Plugins.passion.Security
                 }
 
                 rockContext.SaveChanges();
+
+                if (cbReceiveEmails.Checked)
+                {
+                    person.LoadAttributes();
+                    person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
+                    person.SaveAttributeValue("WifiEmailAuthorization", rockContext);
+                }
             }
         }
     }
