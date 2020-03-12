@@ -514,6 +514,15 @@ namespace RockWeb.Plugins.passion.Security
                 if ( person.IsNotNull() )
                 {
                     RockPage.LinkPersonAliasToDevice( person.PrimaryAlias.Id, hfMacAddress.Value );
+
+                    // Save the selection for email preference if clicked
+                    if (cbReceiveEmails.Checked)
+                    {
+                        person.LoadAttributes();
+                        person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
+                        person.SaveAttributeValue("WifiEmailAuthorization", new RockContext());
+                    }
+
                     return person.PrimaryAliasId;
                 }
                 else
@@ -681,7 +690,7 @@ namespace RockWeb.Plugins.passion.Security
                 {
                     person.LoadAttributes();
                     person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
-                    // person.SaveAttributeValue("WifiEmailAuthorization", rockContext);
+                    person.SaveAttributeValue("WifiEmailAuthorization", rockContext);
                 }
 
                 rockContext.SaveChanges();
