@@ -683,7 +683,7 @@ namespace RockWeb.Plugins.passion.Security
                 {
                     person.LoadAttributes();
                     person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
-                    person.SaveAttributeValue("WifiEmailAuthorization", rockContext);
+                    person.SaveAttributeValue("WifiEmailAuthorization", new RockContext());
                 }
             }
         }
