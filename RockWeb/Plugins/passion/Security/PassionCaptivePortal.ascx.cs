@@ -677,14 +677,14 @@ namespace RockWeb.Plugins.passion.Security
                     }
                 }
 
-                rockContext.SaveChanges();
-
                 if (cbReceiveEmails.Checked)
                 {
                     person.LoadAttributes();
                     person.SetAttributeValue("WifiEmailAuthorization", cbReceiveEmails.Checked.ToString());
-                    person.SaveAttributeValue("WifiEmailAuthorization", new RockContext());
+                    // person.SaveAttributeValue("WifiEmailAuthorization", rockContext);
                 }
+
+                rockContext.SaveChanges();
             }
         }
     }
