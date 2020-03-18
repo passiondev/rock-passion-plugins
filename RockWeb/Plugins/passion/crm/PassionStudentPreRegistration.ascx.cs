@@ -1521,7 +1521,8 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
 
                 passionRow.GetAttributeValues( child );
 
-                child.GradeOffset = person.GetAttributeValue("GradeStudents").AsInteger();
+                //child.GradeOffset = person.GetAttributeValue("GradeStudents").AsInteger();
+                child.GradeOffset = child.AttributeValues["GradeStudents"].AsInteger();
 
                 Children.Add( child );
             }
