@@ -1516,7 +1516,8 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
                     .Where( a => attributeKeys.Contains( a.Key ) )
                     .ToDictionary( v => v.Key, v => v.Value.Value );
 
-                child.GradeOffset = person.GetAttributeValue("GradeStudents").AsInteger();
+               // child.GradeOffset = person.GetAttributeValue("GradeStudents").AsInteger();
+                child.GradeOffset = 6;
 
                 passionRow.GetAttributeValues( child );
 
