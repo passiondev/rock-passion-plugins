@@ -1517,9 +1517,11 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
                     .ToDictionary( v => v.Key, v => v.Value.Value );
 
                // child.GradeOffset = person.GetAttributeValue("GradeStudents").AsInteger();
-                child.GradeOffset = 6;
+                // child.GradeOffset = 6;
 
                 passionRow.GetAttributeValues( child );
+
+                child.GradeOffset = person.GetAttributeValue("GradeStudents").AsInteger();
 
                 Children.Add( child );
             }
@@ -1867,6 +1869,7 @@ ORDER BY [Text]", false, "", "Child Relationship", 2, "CanCheckinRelationships")
                 {"East Atlanta", "76882AE3-1CE8-42A6-A2B6-8C0B29CF8CF8"},
                 {"DC", "D4127B24-E6EE-4117-A688-92BB7C23A461" }
             };
+
             return locationList;
         }
 
